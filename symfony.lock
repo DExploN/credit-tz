@@ -245,6 +245,12 @@
     "symfony/polyfill-php80": {
         "version": "v1.22.0"
     },
+    "symfony/property-access": {
+        "version": "v5.2.2"
+    },
+    "symfony/property-info": {
+        "version": "v5.2.2"
+    },
     "symfony/proxy-manager-bridge": {
         "version": "v5.2.2"
     },
@@ -261,6 +267,9 @@
             "config/packages/routing.yaml",
             "config/routes.yaml"
         ]
+    },
+    "symfony/serializer": {
+        "version": "v5.2.2"
     },
     "symfony/service-contracts": {
         "version": "v2.2.0"
