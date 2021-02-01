@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Customer;
 
-use App\ReadModel\Customer\Car\CarFetcher;
-use App\ReadModel\Customer\Car\Filter\ListFilter;
+use App\ReadModel\Customer\Car\Fetcher\CarFetcher;
+use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
 use App\Service\UrlNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;

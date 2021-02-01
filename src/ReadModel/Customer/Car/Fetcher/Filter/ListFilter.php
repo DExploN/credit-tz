@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Customer\Car\Filter;
+namespace App\ReadModel\Customer\Car\Fetcher\Filter;
 
 use App\ArgumentResolver\IResolvedFromRequest;
 

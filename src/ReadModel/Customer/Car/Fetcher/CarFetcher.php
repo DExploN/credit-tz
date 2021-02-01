@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Customer\Car;
+namespace App\ReadModel\Customer\Car\Fetcher;
 
-use App\ReadModel\Customer\Car\Filter\ListFilter;
+use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
 use Doctrine\DBAL\Connection;
 
 class CarFetcher

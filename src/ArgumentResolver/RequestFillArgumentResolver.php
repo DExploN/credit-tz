@@ -33,15 +33,14 @@ class RequestFillArgumentResolver implements ArgumentValueResolverInterface
     {
         $normalizer = new ObjectNormalizer();
         $data = [];
-        if (stripos($argument->getName(), 'filter')) {
+        if (stripos($argument->getName(), 'filter') !== false) {
             $data = array_merge($data, $request->query->all());
         }
-        if (stripos($argument->getName(), 'multipart')) {
+        if (stripos($argument->getName(), 'multipart') !== false) {
             $data = array_merge($data, $request->request->all());
             $data = array_merge($data, $request->files->all());
         }
-
-        if (stripos($argument->getName(), 'command')) {
+        if (stripos($argument->getName(), 'json') !== false) {
             $decoded = json_decode($request->getContent(), true);
             if (is_array($decoded)) {
                 $data = array_merge($data, $decoded);
