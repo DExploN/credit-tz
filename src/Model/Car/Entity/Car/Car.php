@@ -15,7 +15,7 @@ class Car
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="car_id", unique=true)
+     * @ORM\Column(type="car_car_id", unique=true)
      */
     private CarId $id;
 

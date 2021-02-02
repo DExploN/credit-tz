@@ -24,7 +24,7 @@ class CreditCalculator
         }
     }
 
-    public function calculate(InputData $inputData): CreditCondition
+    public function calculate(CreditRequest $inputData): CreditTerm
     {
         /** @var ICreditProgram[] $programs */
         $programs = iterator_to_array($this->programs);

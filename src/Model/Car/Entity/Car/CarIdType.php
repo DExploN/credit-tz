@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\StringType;
 
 class CarIdType extends StringType
 {
-    public const NAME = 'car_id'; // modify to match your type name
+    public const NAME = 'car_car_id'; // modify to match your type name
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {

@@ -2,18 +2,17 @@
 
 namespace App\Model\Car\Entity\Brand;
 
-use App\Repository\Model\Car\Entity\BrandRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=BrandRepository::class)
+ * @ORM\Entity()
  * @ORM\Table(name="car_brands")
  */
 class Brand
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="brand_id")
+     * @ORM\Column(type="car_brand_id")
      */
     private BrandId $id;
 

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Credit\Service\CreditCalculator\Programs;
 
-use App\Model\Credit\Service\CreditCalculator\CreditCondition;
-use App\Model\Credit\Service\CreditCalculator\InputData;
+use App\Model\Credit\Service\CreditCalculator\CreditRequest;
+use App\Model\Credit\Service\CreditCalculator\CreditTerm;
 
 /**
  * Просто программа-заглушка
@@ -14,14 +14,14 @@ use App\Model\Credit\Service\CreditCalculator\InputData;
  */
 class OtherProgram implements ICreditProgram
 {
-    public function support(InputData $data): bool
+    public function support(CreditRequest $data): bool
     {
         return true;
     }
 
-    public function calculate(InputData $data): CreditCondition
+    public function calculate(CreditRequest $data): CreditTerm
     {
-        return new CreditCondition(10000 * $data->getCreditTerm(), 30.0, 10000);
+        return new CreditTerm(10000 * $data->getCreditTime(), 30.0, 10000);
     }
 
     public function getPriority(): int

@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace App\Model\Credit\Service\CreditCalculator;
 
-class InputData
+class CreditRequest
 {
     private int $totalPrice;
     private int $initialFee;
-    private int $monthlyFee;
-    private int $creditTerm;
+    private int $readyToPayMonthly;
+    private int $creditTime;
 
     /**
      * InputData constructor.
      * @param int $totalPrice Цена автомобиля
      * @param int $initialFee Первоначальный взнос
-     * @param int $monthlyFee Ежемесячная оплата
-     * @param int $creditTerm Срок кредита
+     * @param int $readyToPayMonthly Ожидаемая ежемесячная оплата
+     * @param int $creditTime Срок кредита
      */
-    public function __construct(int $totalPrice, int $initialFee, int $monthlyFee, int $creditTerm)
+    public function __construct(int $totalPrice, int $initialFee, int $readyToPayMonthly, int $creditTime)
     {
         $this->totalPrice = $totalPrice;
         $this->initialFee = $initialFee;
-        $this->monthlyFee = $monthlyFee;
-        $this->creditTerm = $creditTerm;
+        $this->readyToPayMonthly = $readyToPayMonthly;
+        $this->creditTime = $creditTime;
     }
 
     /**
@@ -45,17 +45,17 @@ class InputData
     /**
      * @return int
      */
-    public function getMonthlyFee(): int
+    public function getReadyToPayMonthly(): int
     {
-        return $this->monthlyFee;
+        return $this->readyToPayMonthly;
     }
 
     /**
      * @return int
      */
-    public function getCreditTerm(): int
+    public function getCreditTime(): int
     {
-        return $this->creditTerm;
+        return $this->creditTime;
     }
 
 

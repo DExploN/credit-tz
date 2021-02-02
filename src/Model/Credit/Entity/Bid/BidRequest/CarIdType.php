@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Model\Car\Entity\Brand;
+namespace App\Model\Credit\Entity\Bid\BidRequest;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
-class BrandIdType extends StringType
+class CarIdType extends StringType
 {
-    public const NAME = 'brand_brand_id'; // modify to match your type name
+    public const NAME = 'bid_car_id'; // modify to match your type name
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
-        return new BrandId($value);
+        return new CarId($value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)

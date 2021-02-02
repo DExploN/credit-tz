@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Credit\Service\CreditCalculator\Programs;
 
-use App\Model\Credit\Service\CreditCalculator\CreditCondition;
-use App\Model\Credit\Service\CreditCalculator\InputData;
+use App\Model\Credit\Service\CreditCalculator\CreditRequest;
+use App\Model\Credit\Service\CreditCalculator\CreditTerm;
 
 /**
  * Условия из ТЗ
@@ -14,16 +14,18 @@ use App\Model\Credit\Service\CreditCalculator\InputData;
  */
 class FirstProgram implements ICreditProgram
 {
-    public function support(InputData $data): bool
+    public function support(CreditRequest $data): bool
     {
-        if (($data->getInitialFee() >= 200000) && $data->getMonthlyFee() <= 10000 && $data->getCreditTerm() <= 60) {
+        if (($data->getInitialFee() >= 200000) && $data->getReadyToPayMonthly() <= 10000 && $data->getCreditTime(
+            ) <= 60) {
             return true;
         }
         return false;
     }
-    public function calculate(InputData $data): CreditCondition
+
+    public function calculate(CreditRequest $data): CreditTerm
     {
-        return new CreditCondition(9800 * $data->getCreditTerm(), 12.8, 9800);
+        return new CreditTerm(9800 * $data->getCreditTime(), 12.8, 9800);
     }
 
     public function getPriority(): int

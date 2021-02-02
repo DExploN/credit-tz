@@ -6,8 +6,10 @@ doctrine:
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '13'
         types:
-            car_id: 'App\Model\Car\Entity\Car\CarIdType'
-            brand_id: 'App\Model\Car\Entity\Brand\BrandIdType'
+            car_car_id: 'App\Model\Car\Entity\Car\CarIdType'
+            car_brand_id: 'App\Model\Car\Entity\Brand\BrandIdType'
+            bid_car_id: 'App\Model\Credit\Entity\Bid\BidRequest\CarIdType'
+            bid_bid_id: 'App\Model\Credit\Entity\Bid\BidIdType'
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
@@ -19,3 +21,9 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Model/Car/Entity'
                 prefix: 'App\Model\Car\Entity'
                 alias: Car
+            Credit:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Model/Credit/Entity'
+                prefix: 'App\Model\Credit\Entity'
+                alias: Credit

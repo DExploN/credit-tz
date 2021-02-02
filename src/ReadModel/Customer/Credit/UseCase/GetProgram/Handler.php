@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\ReadModel\Customer\Credit\UseCase\GetProgram;
 
 use App\Model\Credit\Service\CreditCalculator\CreditCalculator;
-use App\Model\Credit\Service\CreditCalculator\CreditCondition;
-use App\Model\Credit\Service\CreditCalculator\InputData;
+use App\Model\Credit\Service\CreditCalculator\CreditRequest;
+use App\Model\Credit\Service\CreditCalculator\CreditTerm;
 
 class Handler
 {
@@ -20,9 +20,9 @@ class Handler
         $this->creditCalculator = $creditCalculator;
     }
 
-    public function __invoke(Query $query): CreditCondition
+    public function __invoke(Query $query): CreditTerm
     {
-        $inputData = new InputData(
+        $inputData = new CreditRequest(
             $query->totalPrice,
             $query->initialFee,
             $query->monthlyFee,

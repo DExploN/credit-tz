@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Model\Credit\Service\CreditCalculator;
 
-class CreditCondition
+class CreditTerm
 {
-    private int $totalPrice;
+    private int $totalPayment;
     private float $interestRate;
     private int $feePerMonth;
 
-    public function __construct(int $totalPrice, float $interestRate, int $feePerMonth)
+    public function __construct(int $totalPayment, float $interestRate, int $feePerMonth)
     {
-        $this->totalPrice = $totalPrice;
+        $this->totalPayment = $totalPayment;
         $this->interestRate = $interestRate;
         $this->feePerMonth = $feePerMonth;
     }
@@ -20,9 +20,9 @@ class CreditCondition
     /**
      * @return int
      */
-    public function getTotalPrice(): int
+    public function getTotalPayment(): int
     {
-        return $this->totalPrice;
+        return $this->totalPayment;
     }
 
     /**
