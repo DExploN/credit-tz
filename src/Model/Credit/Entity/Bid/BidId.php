@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Model\Credit\Entity\Bid;
 
+use App\Model\Shared\VO\Identifier;
 use Webmozart\Assert\Assert;
 
-class BidId
+class BidId implements Identifier
 {
     /**
      * @var string

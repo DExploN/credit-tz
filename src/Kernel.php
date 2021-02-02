@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Shared\Dbal\UuidIdentityType;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -35,4 +36,28 @@ class Kernel extends BaseKernel
             (require $path)($routes->withPath($path), $this);
         }
     }
+
+    public function boot()
+    {
+        parent::boot();
+        $this->identifiersInit();
+    }
+
+    private function identifiersInit(): void
+    {
+        if (file_exists(__DIR__ . '/../config/identifiers.php')) {
+            $connection = $this->container->get('doctrine.orm.entity_manager')->getConnection();
+            $identifiers = require __DIR__ . '/../config/identifiers.php';
+            array_map(
+                function ($type, $class) use ($connection) {
+                    if (UuidIdentityType::register($type, $class)) {
+                        $connection->getDatabasePlatform()->registerDoctrineTypeMapping($class, $type);
+                    }
+                },
+                array_keys($identifiers),
+                $identifiers
+            );
+        }
+    }
+
 }

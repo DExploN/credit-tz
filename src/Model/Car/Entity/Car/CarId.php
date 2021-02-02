@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Model\Car\Entity\Car;
 
+use App\Model\Shared\VO\Identifier;
 use Webmozart\Assert\Assert;
 
-class CarId
+class CarId implements Identifier
 {
     /**
      * @var string

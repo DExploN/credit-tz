@@ -23,10 +23,10 @@ class Query implements IResolvedFromRequest
      * @Assert\NotBlank()
      * @Assert\Type(type="integer")
      */
-    public int $monthlyFee;
+    public int $readyToPayMonthly;
     /**
      * @Assert\NotBlank()
      * @Assert\Type(type="integer")
      */
-    public int $creditTerm;
+    public int $creditTime;
 }

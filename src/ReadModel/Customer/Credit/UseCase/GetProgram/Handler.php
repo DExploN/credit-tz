@@ -25,8 +25,8 @@ class Handler
         $inputData = new CreditRequest(
             $query->totalPrice,
             $query->initialFee,
-            $query->monthlyFee,
-            $query->creditTerm
+            $query->readyToPayMonthly,
+            $query->creditTime
         );
         return $this->creditCalculator->calculate($inputData);
     }

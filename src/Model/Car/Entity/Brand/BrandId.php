@@ -2,9 +2,10 @@
 
 namespace App\Model\Car\Entity\Brand;
 
+use App\Model\Shared\VO\Identifier;
 use Webmozart\Assert\Assert;
 
-class BrandId
+class BrandId implements Identifier
 {
     /**
      * @var string
