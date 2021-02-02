@@ -29,6 +29,55 @@
                 }
               },
               "response": []
+            },
+            {
+              "name": "create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "model",
+                      "value": "CX1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "price",
+                      "value": "100",
+                      "type": "text"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "7497b080-ad46-41c6-afcc-91ba41f9c992",
+                      "type": "text"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/home/pavel/Pictures/Screenshot from 2021-01-19 11-20-58.png"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/customer/cars",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "cars"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         },
