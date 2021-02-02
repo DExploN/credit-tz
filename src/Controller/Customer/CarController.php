@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller\Customer;
 
+use App\Messenger\IMessenger;
+use App\Model\Car\UseCase\Car\Create;
 use App\ReadModel\Customer\Car\Fetcher\CarFetcher;
 use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
 use App\Service\UrlNormalizer;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CarController extends AbstractController
@@ -27,5 +31,16 @@ class CarController extends AbstractController
                 $carFetcher->getCarList($listFilter)
             )
         );
+    }
+
+    /**
+     * Список автомобилей
+     * @Route("/api/customer/cars", methods={"POST"}, name="custimer_car_create")
+     */
+    public function createCar(IMessenger $bus, Create\Command $jsonCommand)
+    {
+        $jsonCommand->id = Uuid::uuid6()->toString();
+        $bus->dispatch([$jsonCommand]);
+        return $this->json(['code' => 0], Response::HTTP_CREATED);
     }
 }
