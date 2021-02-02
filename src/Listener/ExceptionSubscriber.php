@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Listener;
 
+use App\Exception\DomainException;
 use App\Exception\ValidateException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,7 +26,13 @@ class ExceptionSubscriber implements EventSubscriberInterface
     public function formatValidateException(ExceptionEvent $event)
     {
         $exception = $event->getThrowable();
-        if ($exception instanceof ValidateException) {
+        if ($exception instanceof DomainException) {
+            $messages = [];
+            if ($exception instanceof ValidateException) {
+                $messages = $exception->getMessages();
+            } else {
+                $messages['error'] = $exception->getMessage();
+            }
             $response = $event->getResponse();
             if ($response === null) {
                 $response = new JsonResponse();
@@ -35,7 +42,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
                 json_encode(
                     [
                         'code' => 400,
-                        'messages' => $exception->getMessages()
+                        'messages' => $messages
                     ]
                 )
             );

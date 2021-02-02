@@ -41,4 +41,11 @@ class CreditTerm
         return $this->feePerMonth;
     }
 
+    public function isEqual(CreditTerm $creditTerm): bool
+    {
+        return $creditTerm->interestRate === $this->interestRate &&
+            $creditTerm->totalPayment === $this->totalPayment &&
+            $creditTerm->feePerMonth === $this->feePerMonth;
+    }
+
 }
