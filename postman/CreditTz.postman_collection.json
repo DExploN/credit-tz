@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "bd5ef73c-4090-498e-a794-8022baae3669",
+    "name": "CreditTz",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer",
+      "item": [
+        {
+          "name": "Car",
+          "item": [
+            {
+              "name": "list",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/customer/cars",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "cars"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Credit",
+          "item": [
+            {
+              "name": "find-program",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"totalPrice\": 1000000,\n    \"initialFee\": 200000,\n    \"readyToPayMonthly\": 10000,\n    \"creditTime\":60\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/customer/find-program",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "find-program"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create-bid",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"car\": \"7c5cf423-5807-4f11-87fd-268035b0f7b7\",\n    \"totalPrice\": 1000000,\n    \"initialFee\": 200000,\n    \"readyToPayMonthly\": 10000,\n    \"creditTime\":60,\n    \"totalPayment\": 588000,\n    \"monthlyFee\":9800,\n    \"interestRate\": 12.8\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/customer/create-bid",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "create-bid"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
