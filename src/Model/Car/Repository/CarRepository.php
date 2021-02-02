@@ -38,4 +38,10 @@ class CarRepository
         $this->entityManager->persist($car);
         $this->entityManager->flush();
     }
+
+    public function save(Car $car): void
+    {
+        $this->entityManager->flush();
+    }
+
 }

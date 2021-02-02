@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Customer;
 
 use App\Messenger\IMessenger;
+use App\Model\Car\UseCase\Car\ChangeImage;
 use App\Model\Car\UseCase\Car\Create;
 use App\ReadModel\Customer\Car\Fetcher\CarFetcher;
 use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
@@ -37,10 +38,14 @@ class CarController extends AbstractController
      * Список автомобилей
      * @Route("/api/customer/cars", methods={"POST"}, name="custimer_car_create")
      */
-    public function createCar(IMessenger $bus, Create\Command $jsonCommand)
-    {
-        $jsonCommand->id = Uuid::uuid6()->toString();
-        $bus->dispatch([$jsonCommand]);
+    public function createCar(
+        IMessenger $bus,
+        Create\Command $multipartCreateCommand,
+        ChangeImage\Command $multipartChangeImage
+    ) {
+        $multipartCreateCommand->id = Uuid::uuid6()->toString();
+        $multipartChangeImage->id = $multipartCreateCommand->id;
+        $bus->dispatch([$multipartCreateCommand, $multipartChangeImage]);
         return $this->json(['code' => 0], Response::HTTP_CREATED);
     }
 }

@@ -36,7 +36,7 @@ class CarFetcher
             ->addSelect('cb.id as brandId, cb.name as brandName');
         $qb->setFirstResult(($page - 1) * $limit);
         $qb->setMaxResults($limit);
-
+        $qb->orderBy('cc.id', 'desc');
         if ($listFilter->brand) {
             $qb->andWhere('cb.id = :brandId')->setParameter('brandId', $listFilter->brand);
         }
