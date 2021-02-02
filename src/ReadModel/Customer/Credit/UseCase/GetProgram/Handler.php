@@ -7,8 +7,9 @@ namespace App\ReadModel\Customer\Credit\UseCase\GetProgram;
 use App\Model\Credit\Service\CreditCalculator\CreditCalculator;
 use App\Model\Credit\Service\CreditCalculator\CreditRequest;
 use App\Model\Credit\Service\CreditCalculator\CreditTerm;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class Handler
+class Handler implements MessageHandlerInterface
 {
     /**
      * @var CreditCalculator

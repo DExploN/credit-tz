@@ -6,8 +6,9 @@ namespace App\Model\Credit\UseCase\Bid\Create;
 
 use App\Model\Credit\Entity\Bid;
 use App\Model\Credit\Repository\BidRepository;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class Handler
+class Handler implements MessageHandlerInterface
 {
     /**
      * @var BidRepository

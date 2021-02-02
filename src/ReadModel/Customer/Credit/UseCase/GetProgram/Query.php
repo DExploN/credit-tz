@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\ReadModel\Customer\Credit\UseCase\GetProgram;
 
 use App\ArgumentResolver\IResolvedFromRequest;
+use App\Messenger\Message\ISyncMessage;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class Query implements IResolvedFromRequest
+class Query implements IResolvedFromRequest, ISyncMessage
 {
     /**
      * @Assert\NotBlank()

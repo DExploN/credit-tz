@@ -38,3 +38,6 @@ services:
   App\Model\Credit\Service\CreditCalculator\CreditCalculator:
     arguments:
       - !tagged_iterator app.credit_program
+
+  App\Messenger\IMessenger:
+    class: App\Messenger\TransactionMessenger
