@@ -31,8 +31,10 @@ class Handler implements MessageHandlerInterface
     {
         $car = $this->cars->get(new CarId($command->id));
         // Todo сделать с какой-либо абстракцией
-        $path = 'cars/' . $command->id . '/image.' . $command->image->guessClientExtension();
-        $this->imageManager->savefromUpload($command->image, $path);
+        $path = $this->imageManager->saveFromUpload(
+            $command->image,
+            new CarId($command->id),
+        );
         $car->changeImage(new Image($path));
         $this->cars->save($car);
     }

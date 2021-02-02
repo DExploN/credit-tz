@@ -22,9 +22,10 @@ class FileManager
         $this->defaultStorage = $defaultStorage;
     }
 
-    public function uploadFile(UploadedFile $file, string $relativePath)
+    public function uploadFile(UploadedFile $file, string $directory, string $name): string
     {
         if ($file->isValid()) {
+            $relativePath = $directory . DIRECTORY_SEPARATOR . $name . '.' . $file->getClientOriginalExtension();
             $this->defaultStorage->write(
                 $relativePath,
                 file_get_contents($file->getRealPath()),
@@ -33,6 +34,7 @@ class FileManager
                     Config::OPTION_VISIBILITY => Visibility::PUBLIC
                 ]
             );
+            return $relativePath;
         } else {
             throw new DomainException("Ошибка при загрузке файла");
         }
