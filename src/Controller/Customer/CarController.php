@@ -39,4 +39,15 @@ class CarController extends AbstractController
         $bus->dispatch([$multipartCreateCommand]);
         return $this->json(['code' => 0], Response::HTTP_CREATED);
     }
+
+    /**
+     * Детальная информация об автомобиле
+     * @Route("/api/customer/cars/{id}", methods={"GET"}, name="custimer_car_detail")
+     */
+    public function carDetail(
+        string $id,
+        CarFetcher $carFetcher
+    ) {
+        return $this->json($carFetcher->getCar($id));
+    }
 }

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\ReadModel\Customer\Car\Normalizer;
+namespace App\ReadModel\Customer\Car\View;
 
-use App\ReadModel\Customer\Car\View\CarView;
 use App\Service\UrlNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -30,7 +29,7 @@ class CarViewNormalizer implements NormalizerInterface
         return $object;
     }
 
-    public function supportsNormalization($data, string $format = null)
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $data instanceof CarView;
     }
