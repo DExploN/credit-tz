@@ -31,6 +31,46 @@
               "response": []
             },
             {
+              "name": "detail",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/customer/cars/1eb65edb-ad64-66ec-aa3e-0242ac120002",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "cars",
+                    "1eb65edb-ad64-66ec-aa3e-0242ac120002"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/api/customer/cars/1eb65edb-ad64-66ec-aa3e-0242ac120002",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "cars",
+                    "1eb65edb-ad64-66ec-aa3e-0242ac120002"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "create",
               "request": {
                 "method": "POST",
@@ -74,6 +114,57 @@
                     "api",
                     "customer",
                     "cars"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "model",
+                      "value": "CX2",
+                      "type": "text"
+                    },
+                    {
+                      "key": "price",
+                      "value": "100",
+                      "type": "text"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "7497b080-ad46-41c6-afcc-91ba41f9c992",
+                      "type": "text"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "src": "/home/pavel/Pictures/Screenshot from 2021-01-19 11-20-58.png"
+                    }
+                  ],
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/api/customer/cars/1eb65eb6-1cf7-6ade-ab11-0242ac120002/update",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "api",
+                    "customer",
+                    "cars",
+                    "1eb65eb6-1cf7-6ade-ab11-0242ac120002",
+                    "update"
                   ]
                 }
               },
