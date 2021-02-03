@@ -23,13 +23,7 @@ class CarController extends AbstractController
     public function carList(CarFetcher $carFetcher, UrlNormalizer $normalizer, ListFilter $listFilter)
     {
         return $this->json(
-            array_map(
-                function (array $row) use ($normalizer) {
-                    $row['imagePath'] = empty($row['imagePath']) ? null : $normalizer->getPublicUrl($row['imagePath']);
-                    return $row;
-                },
                 $carFetcher->getCarList($listFilter)
-            )
         );
     }
 

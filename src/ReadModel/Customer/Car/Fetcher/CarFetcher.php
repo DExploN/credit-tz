@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\ReadModel\Customer\Car\Fetcher;
 
 use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
+use App\ReadModel\Customer\Car\View\CarView;
+use App\Service\Hydrator\IHydrator;
 use Doctrine\DBAL\Connection;
 
 class CarFetcher
@@ -13,10 +15,15 @@ class CarFetcher
      * @var Connection
      */
     private Connection $connection;
+    /**
+     * @var IHydrator
+     */
+    private IHydrator $hydrator;
 
-    public function __construct(Connection $connection)
+    public function __construct(Connection $connection, IHydrator $hydrator)
     {
         $this->connection = $connection;
+        $this->hydrator = $hydrator;
     }
 
     /**
@@ -40,8 +47,7 @@ class CarFetcher
         if ($listFilter->brand) {
             $qb->andWhere('cb.id = :brandId')->setParameter('brandId', $listFilter->brand);
         }
-        return $qb->execute()->fetchAllAssociative();
+        return $this->hydrator->multiHydrate($qb->execute()->fetchAllAssociative(), CarView::class);
     }
-
 
 }
