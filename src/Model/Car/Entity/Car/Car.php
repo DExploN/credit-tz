@@ -70,5 +70,13 @@ class Car
         $this->price = $price;
     }
 
+    /**
+     * @return CarId
+     */
+    public function getId(): CarId
+    {
+        return $this->id;
+    }
+
 
 }

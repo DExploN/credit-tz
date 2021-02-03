@@ -33,14 +33,25 @@ class CarRepository
         return $car;
     }
 
-    public function add(Car $car): void
+    public function add(Car ...$cars): void
     {
-        $this->entityManager->persist($car);
+        foreach ($cars as $car) {
+            $this->entityManager->persist($car);
+        }
+
         $this->entityManager->flush();
     }
 
-    public function save(Car $car): void
+    public function save(Car ...$car): void
     {
+        $this->entityManager->flush();
+    }
+
+    public function remove(Car ...$cars)
+    {
+        foreach ($cars as $car) {
+            $this->entityManager->remove($car);
+        }
         $this->entityManager->flush();
     }
 

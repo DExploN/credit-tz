@@ -6,6 +6,7 @@ namespace App\Controller\Customer;
 
 use App\Messenger\IMessenger;
 use App\Model\Car\UseCase\Car\Create;
+use App\Model\Car\UseCase\Car\Delete\Command;
 use App\ReadModel\Customer\Car\Fetcher\CarFetcher;
 use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
 use App\Service\UrlNormalizer;
@@ -49,5 +50,17 @@ class CarController extends AbstractController
         CarFetcher $carFetcher
     ) {
         return $this->json($carFetcher->getCar($id));
+    }
+
+    /**
+     * Удаление автомобиля
+     * @Route("/api/customer/cars/{id}", methods={"DELETE"}, name="custimer_car_delete")
+     */
+    public function deleteCar(
+        string $id,
+        IMessenger $bus
+    ) {
+        $bus->dispatch([new Command($id)]);
+        return $this->json(['code' => 0], Response::HTTP_NO_CONTENT);
     }
 }

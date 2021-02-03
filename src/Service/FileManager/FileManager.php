@@ -44,4 +44,11 @@ class FileManager
             throw new DomainException("Ошибка при загрузке файла");
         }
     }
+
+    public function deleteDirectory(string $relativePath)
+    {
+        if (!empty($relativePath)) {
+            $this->defaultStorage->deleteDirectory($relativePath);
+        }
+    }
 }

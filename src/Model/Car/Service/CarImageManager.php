@@ -25,4 +25,9 @@ class CarImageManager
     {
         return $this->fileManager->uploadFile($file, "cars/{$carId}", 'image');
     }
+
+    public function removeImage(CarId $carId)
+    {
+        $this->fileManager->deleteDirectory("cars/{$carId}");
+    }
 }
