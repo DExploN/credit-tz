@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\FileManager;
 
 use App\Exception\DomainException;
 use League\Flysystem\Config;
 use League\Flysystem\FilesystemOperator;
 use League\Flysystem\Visibility;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileManager
@@ -22,10 +23,12 @@ class FileManager
         $this->defaultStorage = $defaultStorage;
     }
 
-    public function uploadFile(UploadedFile $file, string $directory, string $name): string
+    public function uploadFile(UploadedFile $file, string $directory, ?string $name = null)
     {
         if ($file->isValid()) {
-            $relativePath = $directory . DIRECTORY_SEPARATOR . $name . '.' . $file->getClientOriginalExtension();
+            $name = $name ?? Uuid::uuid4()->toString();
+            $name .= '.' . $file->getClientOriginalExtension();
+            $relativePath = $directory . DIRECTORY_SEPARATOR . $name;
             $this->defaultStorage->write(
                 $relativePath,
                 file_get_contents($file->getRealPath()),
@@ -34,7 +37,9 @@ class FileManager
                     Config::OPTION_VISIBILITY => Visibility::PUBLIC
                 ]
             );
-            return $relativePath;
+            return new File(
+                $relativePath, $name, $file->getClientOriginalName(), $file->getSize(), $file->getMimeType()
+            );
         } else {
             throw new DomainException("Ошибка при загрузке файла");
         }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Customer;
 
 use App\Messenger\IMessenger;
-use App\Model\Car\UseCase\Car\ChangeImage;
 use App\Model\Car\UseCase\Car\Create;
 use App\ReadModel\Customer\Car\Fetcher\CarFetcher;
 use App\ReadModel\Customer\Car\Fetcher\Filter\ListFilter;
@@ -40,12 +39,10 @@ class CarController extends AbstractController
      */
     public function createCar(
         IMessenger $bus,
-        Create\Command $multipartCreateCommand,
-        ChangeImage\Command $multipartChangeImage
+        Create\Command $multipartCreateCommand
     ) {
         $multipartCreateCommand->id = Uuid::uuid6()->toString();
-        $multipartChangeImage->id = $multipartCreateCommand->id;
-        $bus->dispatch([$multipartCreateCommand, $multipartChangeImage]);
+        $bus->dispatch([$multipartCreateCommand]);
         return $this->json(['code' => 0], Response::HTTP_CREATED);
     }
 }

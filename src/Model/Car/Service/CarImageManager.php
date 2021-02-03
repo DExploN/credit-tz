@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Model\Car\Service;
 
 use App\Model\Car\Entity\Car\CarId;
-use App\Service\FileManager;
+use App\Service\FileManager\File;
+use App\Service\FileManager\FileManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CarImageManager
@@ -20,7 +21,7 @@ class CarImageManager
         $this->fileManager = $fileManager;
     }
 
-    public function saveFromUpload(UploadedFile $file, CarId $carId): string
+    public function saveFromUpload(UploadedFile $file, CarId $carId): File
     {
         return $this->fileManager->uploadFile($file, "cars/{$carId}", 'image');
     }

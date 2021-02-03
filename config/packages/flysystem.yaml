@@ -4,4 +4,6 @@ flysystem:
         default.storage:
             adapter: 'local'
             options:
+                # Путь должен быть в закрытую область, для теста - сразу в паблик.
+                # Или делать несколько стораджей
                 directory: '%kernel.project_dir%/public/storage'
