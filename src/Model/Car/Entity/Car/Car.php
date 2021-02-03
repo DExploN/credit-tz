@@ -78,5 +78,10 @@ class Car
         return $this->id;
     }
 
+    public function changeModel(string $model): void
+    {
+        $this->model = $model;
+    }
+
 
 }

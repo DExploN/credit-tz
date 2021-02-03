@@ -22,6 +22,9 @@ class RequestFillArgumentResolver implements ArgumentValueResolverInterface
         if ($type === null) {
             return false;
         }
+        if (!class_exists($argument->getType())) {
+            return false;
+        }
         $reflection = new \ReflectionClass($argument->getType());
         if ($reflection->implementsInterface(IResolvedFromRequest::class)) {
             return true;
