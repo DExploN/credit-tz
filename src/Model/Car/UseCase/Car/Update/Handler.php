@@ -13,7 +13,7 @@ use App\Model\Car\Repository\CarRepository;
 use App\Model\Car\Service\CarImageManager;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class Handler implements MessageHandlerInterface
+class Handler implements MessageHandlerInterface, IUpdateCar
 {
     /**
      * @var CarRepository

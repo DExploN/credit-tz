@@ -44,3 +44,6 @@ services:
 
   App\Service\Hydrator\IHydrator:
     class: App\Service\Hydrator\SympleHydrator
+
+  App\Model\Car\UseCase\Car\Update\InvalidateCacheDecorator:
+    decorates: App\Model\Car\UseCase\Car\Update\Handler

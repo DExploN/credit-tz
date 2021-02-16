@@ -41,6 +41,15 @@ services:
       - 3306:3306
     networks:
       - credit_tz_net
+  redis:
+    image: redis:4.0.9
+    container_name: credit_tz_redis
+    ports:
+      - 6379:6379
+    volumes:
+      - "./redis/volumes:/data"
+    networks:
+      - credit_tz_net
 networks:
   credit_tz_net:
     name: credit_tz_network

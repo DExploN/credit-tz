@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "958b07acef10461845fd491c7de482ef",
+  "content-hash": "780fc9bdaf57a7f11177b3efb7c73b8f",
   "packages": [
     {
       "name": "brick/math",
@@ -2383,7 +2383,7 @@
     },
     {
       "name": "symfony/cache",
-      "version": "v5.2.2",
+      "version": "v5.2.3",
       "source": {
         "type": "git",
         "url": "https://github.com/symfony/cache.git",
@@ -2458,7 +2458,7 @@
         "psr6"
       ],
       "support": {
-        "source": "https://github.com/symfony/cache/tree/v5.2.2"
+        "source": "https://github.com/symfony/cache/tree/v5.2.3"
       },
       "funding": [
         {

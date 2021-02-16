@@ -14,6 +14,8 @@ use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class CarController extends AbstractController
 {
@@ -61,9 +63,16 @@ class CarController extends AbstractController
      */
     public function carDetail(
         string $id,
-        CarFetcher $carFetcher
+        CarFetcher $carFetcher,
+        CacheInterface $cache
     ) {
-        return $this->json($carFetcher->getCar($id));
+        return $cache->get(
+            "car_$id",
+            function (ItemInterface $item) use ($carFetcher, $id) {
+                $item->expiresAfter(100);
+                return $this->json($carFetcher->getCar($id));
+            }
+        );
     }
 
     /**
